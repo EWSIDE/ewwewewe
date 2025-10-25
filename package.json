@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tabler/icons-react": "^3.35.0",
     "@telegram-apps/sdk": "^3.11.8",
     "@telegram-apps/telegram-ui": "^2.1.13",
     "@twa-dev/sdk": "^8.0.2",
