@@ -1,3 +1,24 @@
 runtime: nodejs22
-build_command: npm run build
-output_dir: dist
+
+handlers:
+  # JS / JSX / MJS — обязательно с корректным MIME
+  - url: /(.*\.(js|mjs|jsx))$
+    static_files: dist/\1
+    upload: dist/(.*\.(js|mjs|jsx))$
+    mime_type: text/javascript
+
+  # CSS файлы
+  - url: /(.*\.css)$
+    static_files: dist/\1
+    upload: dist/(.*\.css)$
+    mime_type: text/css
+
+  # Картинки, шрифты и другие ассеты
+  - url: /(.*\.(png|jpg|jpeg|gif|svg|ico|woff2?|ttf|eot|webp))$
+    static_files: dist/\1
+    upload: dist/(.*\.(png|jpg|jpeg|gif|svg|ico|woff2?|ttf|eot|webp))$
+
+  # SPA маршруты — всё остальное направляем на index.html
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html
